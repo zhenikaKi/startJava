@@ -1,3 +1,5 @@
+package homeworks;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -58,7 +60,7 @@ public class Lesson2 {
         logger.info("Задание 2. Начало");
         try {
             //открываем файл
-            File file = new File("lesson2_2.txt");
+            File file = new File("homeworks/lesson2_2.txt");
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             //logger.info("Строки из файла");
             logger.info("Распарсенные строки");
