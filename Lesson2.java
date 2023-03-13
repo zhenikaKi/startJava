@@ -32,7 +32,7 @@ public class Lesson2 {
     private static final Logger logger = Logger.getLogger(Lesson2.class.getName());
 
     public static void main(String[] args) throws IOException {
-        FileHandler fileHandler = new FileHandler("lesson2.log");
+        FileHandler fileHandler = new FileHandler("log/lesson2.log");
         fileHandler.setFormatter(new SimpleFormatter());
         logger.addHandler(fileHandler);
 

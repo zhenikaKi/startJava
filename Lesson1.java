@@ -28,7 +28,7 @@ public class Lesson1 {
 	private static final int MAX_VALUE = 1000; //максимальное значение для числа, чтобы найти решение уравнения 4 задачи
 
 	public static void main(String[] args) throws IOException {
-		FileHandler fileHandler = new FileHandler("lesson1.log");
+		FileHandler fileHandler = new FileHandler("log/lesson1.log");
 		fileHandler.setFormatter(new SimpleFormatter());
 		logger.addHandler(fileHandler);
 
