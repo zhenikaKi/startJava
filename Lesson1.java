@@ -1,4 +1,9 @@
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  * Задание 1: Вычислить n-ое треугольного число(сумма чисел от 1 до n), а так же n! (произведение чисел от 1 до n).<br>
@@ -19,13 +24,18 @@ import java.util.Scanner;
  */
 public class Lesson1 {
 
+	private static final Logger logger = Logger.getLogger(Lesson1.class.getName());
 	private static final int MAX_VALUE = 1000; //максимальное значение для числа, чтобы найти решение уравнения 4 задачи
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		FileHandler fileHandler = new FileHandler("lesson1.log");
+		fileHandler.setFormatter(new SimpleFormatter());
+		logger.addHandler(fileHandler);
+
 		//task1();
 		//task2();
-		//task3();
-		task4();
+		task3();
+		//task4();
 	}
 
 	private static void task1() {
@@ -64,22 +74,23 @@ public class Lesson1 {
 		System.out.print("Введите второе число: ");
 		double n2 = scanner.nextDouble();
 		scanner.close();
+		logger.info(String.format("Выполняемая операция: %s %s %s", n1, oper, n2));
 
 		switch (oper) {
 			case '+':
-				System.out.printf("Сумма: %f\n", (n1 + n2));
+				logger.info(String.format("Сумма: %f\n", (n1 + n2)));
 				break;
 			case '-':
-				System.out.printf("Разность: %f\n", (n1 - n2));
+				logger.info(String.format("Разность: %f\n", (n1 - n2)));
 				break;
 			case '*':
-				System.out.printf("Произведение: %f\n", (n1 * n2));
+				logger.info(String.format("Произведение: %f\n", (n1 * n2)));
 				break;
 			case '/':
-				System.out.printf("Деление: %f\n", (n1 / n2));
+				logger.info(String.format("Деление: %f\n", (n1 / n2)));
 				break;
 			default:
-				System.out.println("Некорректная операция");
+				logger.log(Level.WARNING, "Некорректная операция");
 		}
 	}
 
@@ -91,7 +102,7 @@ public class Lesson1 {
 		scanner.close();
 
 		//сперва убираем пробелы
-		input = input.replaceAll("\s", "");
+		input = input.replaceAll("\\s", "");
 		//получаем первое число
 		String[] tmp = input.split("\\+");
 		String q = tmp[0];
